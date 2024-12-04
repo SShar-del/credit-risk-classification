@@ -1,1 +1,71 @@
-# credit-risk-classification
+## Overview of the Analysis
+
+* The purpose of the analysis is to identify the creditworthiness of borrowers. 
+
+* The data used was related to historical lending activity from a peer-to-peer lending services, and it was analysed to predict whether a borrower is likely to default on their loan. These predictions can then be used by the lending company to adjust loan terms, set appropriate interest rates, or reject high-risk loan applications.
+
+* The variable being predicted in this model is loan_status, which indicates the creditworthiness of a loan applicant. It is a binary classification variable with two possible outcomes:  
+
+    0 (Healthy Loan): Indicates that the loan is being repaid as agreed upon and it represents borrowers who are meeting their financial obligations without issues. These loans are considered low-risk from the lender’s perspective.  
+
+    1 (High-Risk Loan): Indicates that the loan is at significant risk of defaulting. It represents borrowers who show patterns of financial distress or are likely to miss loan repayments. These loans are considered high-risk and may lead to potential losses for the lenders.
+
+* The stages of the machine learning process that was done as  part of this analysis are:  
+    1. Data Loading and Preparation
+
+    Step 1: Load the data - The lending_data.csv file is read into a Pandas DataFrame to make the data accessible for analysis.  
+
+    Step 2: Create the labels and features - The loan_status column is set as the label (y) since this is the target variable to predict.The remaining columns (e.g., loan_size, interest_rate, borrower_income, etc.) are selected as the features (X) for the model.  
+
+    2. Splitting the Data into Training and Testing sets to use the training set to train the model and the testing set to evaluate its performance. The dataset is split into training and testing sets using train_test_split. A typical split is 80% training and 20% testing.
+
+   3. Logistic Regression Model
+
+    Step 1: Train the Logistic Regression Model - The logistic regression model which is a statistical method for predicting binary outcomes from data. For this analysis, it is fitted on the training data (X_train and y_train) to learn the relationship between the features and the target variable.
+
+    Step 2: Make Predictions- Predictions are made on the testing data (X_test) using the trained model to evaluate how well the model generalizes to unseen data.
+    
+    4. Model Evaluation
+    
+    
+    The performance of the model was evaluated using: 
+        
+    Confusion Matrix - A confusion matrix is generated to compare the predicted values against the actual values (y_test) to understand the model’s performance by analyzing true positives, true negatives, false positives, and false negatives.
+
+    Classification Report - A classification report is generated to calculate precision, recall, F1-score, and support for each class to assess the model's effectiveness.
+
+## Results
+
+### Accuracy (99%)
+The model achieves a very high accuracy, indicating that it is excellent at correctly classifying both healthy and high-risk loans overall.
+
+### Precision
+
+#### Precision for Healthy Loans (1.00): 
+Out of all loans predicted as healthy loans (0), 100% were truly healthy loans. This high precision indicates the model generates no false positives, meaning it doesn’t  misclassify any high-risk loans as healthy.
+
+#### Precision for High-Risk Loans (0.84):
+Out of all loans predicted as high-risk loans (1), 84% were truly high-risk. This shows that the model is fairly reliable but could lead to some false positives meaning healthy loans incorrectly classified as high-risk so this model could be improved to reduce false alarms.
+
+### Recall
+
+#### Recall for Healthy Loans (0.99): 
+Out of all actual healthy loans, 99% were correctly identified by the model.
+This high recall shows that the model rarely misses healthy loans, ensuring that most borrowers with good creditworthiness are correctly classified.
+
+#### Recall for High-Risk Loans (0.94):
+Out of all actual high-risk loans, 94% were correctly identified by the model.
+This is a high recall which is crucial in the creditworthiness context, as missing true high-risk loans (false negatives) could lead to significant financial losses.
+
+
+## Summary
+
+The model is recommended for deployment as it achieves excellent performance in predicting loan statuses, hence identifying the credit-worthiness of the borrowers. The model performs exceptionally well for healthy loans class and in case of the high-risk loans class, it particularly excels in identifying high-risk loans given the model's high recall which minimizes missed defaults, thus aligning with business need of managing default risk in peer-to-peer lending. However, there is room for improvement in precision for high-risk loans to reduce false positives.
+
+
+
+## Acknowledgements
+
+ - Data for this dataset was generated by edX Boot Camps LLC, and is intended for educational purposes only.
+
+
